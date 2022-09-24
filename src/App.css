@@ -1,5 +1,10 @@
 .app-wrapper {
+    width: 1200px;
+    margin: 0 auto;
     display: grid;
+    grid-template-areas:
+    "h h"
+    "n c";
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
@@ -7,12 +12,19 @@
 
 .header {
     grid-area: h;
+    background-color: purple;
+}
+
+.header img {
+    width: 60px;
 }
 
 .nav {
     grid-area: n;
+    background-color: purple;
 }
 
 .content {
     grid-area: c;
+    background-color: green;
 }
