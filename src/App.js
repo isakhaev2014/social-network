@@ -2,14 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
-import Content from "./components/Content";
+import Profile from "./components/Profile";
 
 const App = () => {
   return (
       <div className='app-wrapper'>
           <Header />
           <NavBar />
-          <Content />
+          <Profile />
       </div>
   )
 
