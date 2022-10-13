@@ -1,4 +1,4 @@
-import message from "../components/Dialogs/Message/Message";
+import {renderEntireTree} from "../Render";
 
 let state = {
 
@@ -36,6 +36,7 @@ export let addPost = (postMessage) => {
         likeCount: 0
     }
     state.profilePage.posts.push(newPost)
+    renderEntireTree(state)
 }
 
 export default state;
