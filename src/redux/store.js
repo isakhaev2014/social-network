@@ -15,11 +15,11 @@ let store = {
         messagesPage: {
             dialogs: [{id: 1, name: 'Van Darkholme'}, {id: 2, name: 'Billy'}, {id: 3, name: 'Boss of Gym'}, {
                 id: 4, name: 'Yuliya'
-            }, {id: 5, name: 'Nikis'}, {id: 6, name: 'Andrey'}],
+            }, {id: 5, name: 'Nikis'}, {id: 6, name: 'Maga'}],
             messages: [{id: 1, message: 'My name is Van'}, {id: 2, message: 'Ouh shit, im sorry'}, {
                 id: 3, message: 'Boy next door!'
-            }, {id: 4, message: 'Где коммиты псина?'}, {id: 5, message: 'Ты не видел моего сынка?'}, {
-                id: 6, message: 'Привет'
+            }, {id: 4, message: 'Ты конченый мудила, гори в аду'}, {id: 5, message: 'Ты не видел моего сынка?'}, {
+                id: 6, message: 'Юля, ты лучшее что есть у меня, а реакт лучшее место для признаний в любви'
             }],
             newMessageBody: ""
         },
