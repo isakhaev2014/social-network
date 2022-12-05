@@ -3,61 +3,64 @@ import s from './Users.module.css'
 
 const Users = (props) => {
 
-    if (props.users.length === 0) {
-        props.setUsers([
-                {
-                    id: 1,
-                    photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
-                    followed: false,
-                    fullName: 'Van Darkholme',
-                    status: 'Gachi is art',
-                    location: {city: 'Los-Angeles', country: 'USA'}
-                },
-                {
-                    id: 2,
-                    photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
-                    followed: false,
-                    fullName: 'Billy',
-                    status: 'Looking for the Boss',
-                    location: {city: 'Holywood', country: 'USA'}
-                },
-                {
-                    id: 3,
-                    photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
-                    followed: false,
-                    fullName: 'Boss of Gym',
-                    status: 'Where are you Billy',
-                    location: {city: 'San-Francisco', country: 'USA'}
-                },
-                {
-                    id: 4,
-                    photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
-                    followed: false,
-                    fullName: 'Yuliya',
-                    status: 'My boyfriend is the greatest',
-                    location: {city: 'Moscow', country: 'Russia'}
-                },
-                {
-                    id: 5,
-                    photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
-                    followed: false,
-                    fullName: 'Nikis',
-                    status: 'Sell Priora',
-                    location: {city: 'Stavropol', country: 'Russia'}
-                },
-                {
-                    id: 6,
-                    photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
-                    followed: false,
-                    fullName: 'Andrey',
-                    status: 'Buy a garage in London',
-                    location: {city: 'London', country: 'England'}
-                }
-            ]
-        )
+    let getUsers = () => {
+        if (props.users.length === 0) {
+            props.setUsers([
+                    {
+                        id: 1,
+                        photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
+                        followed: false,
+                        fullName: 'Van Darkholme',
+                        status: 'Gachi is art',
+                        location: {city: 'Los-Angeles', country: 'USA'}
+                    },
+                    {
+                        id: 2,
+                        photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
+                        followed: false,
+                        fullName: 'Billy',
+                        status: 'Looking for the Boss',
+                        location: {city: 'Holywood', country: 'USA'}
+                    },
+                    {
+                        id: 3,
+                        photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
+                        followed: false,
+                        fullName: 'Boss of Gym',
+                        status: 'Where are you Billy',
+                        location: {city: 'San-Francisco', country: 'USA'}
+                    },
+                    {
+                        id: 4,
+                        photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
+                        followed: false,
+                        fullName: 'Yuliya',
+                        status: 'My boyfriend is the greatest',
+                        location: {city: 'Moscow', country: 'Russia'}
+                    },
+                    {
+                        id: 5,
+                        photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
+                        followed: false,
+                        fullName: 'Nikis',
+                        status: 'Sell Priora',
+                        location: {city: 'Stavropol', country: 'Russia'}
+                    },
+                    {
+                        id: 6,
+                        photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
+                        followed: false,
+                        fullName: 'Andrey',
+                        status: 'Buy a garage in London',
+                        location: {city: 'London', country: 'England'}
+                    }
+                ]
+            )
+        }
     }
 
     return <div>
+        <button onClick={getUsers}>Get Users</button>
         {
             props.users.map(u => <div key={u.id}>
                 <span>
