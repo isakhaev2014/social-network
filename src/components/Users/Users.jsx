@@ -1,64 +1,43 @@
 import React from "react";
 import s from './Users.module.css'
+import axios from "axios";
 
 class Users extends React.Component {
 
     componentDidMount() {
-        this.props.setUsers([
-                {
-                    id: 1,
-                    photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
-                    followed: false,
-                    fullName: 'Van Darkholme',
-                    status: 'Gachi is art',
-                    location: {city: 'Los-Angeles', country: 'USA'}
-                },
-                {
-                    id: 2,
-                    photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
-                    followed: false,
-                    fullName: 'Billy',
-                    status: 'Looking for the Boss',
-                    location: {city: 'Holywood', country: 'USA'}
-                },
-                {
-                    id: 3,
-                    photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
-                    followed: false,
-                    fullName: 'Boss of Gym',
-                    status: 'Where are you Billy',
-                    location: {city: 'San-Francisco', country: 'USA'}
-                },
-                {
-                    id: 4,
-                    photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
-                    followed: false,
-                    fullName: 'Yuliya',
-                    status: 'My boyfriend is the greatest',
-                    location: {city: 'Moscow', country: 'Russia'}
-                },
-                {
-                    id: 5,
-                    photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
-                    followed: false,
-                    fullName: 'Nikis',
-                    status: 'Sell Priora',
-                    location: {city: 'Stavropol', country: 'Russia'}
-                },
-                {
-                    id: 6,
-                    photoUrl: 'https://lh3.googleusercontent.com/TMrev6WWnXwyrJKUiHnzH1lUn-PIAyeazq5QQ5bIMJrqumqH2owjx9I9rghvV6SkPcA',
-                    followed: false,
-                    fullName: 'Andrey',
-                    status: 'Buy a garage in London',
-                    location: {city: 'London', country: 'England'}
-                }
-            ]
-        )
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+            })
+    }
+
+    onPageChanged = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+                this.props.setTotalUsersCount(response.data.totalCount)
+            })
     }
 
     render() {
+
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
+
+        let pages = []
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i)
+        }
+
         return <div>
+            <div>
+                {pages.map(p => {
+                    return <span className={this.props.currentPage === p && s.selectedPage}
+                                 onClick={(e) => {
+                                     this.onPageChanged(p)
+                                 }}>{p}</span>
+                })}
+            </div>
             {
                 this.props.users.map(u => <div key={u.id}>
                 <span>
@@ -78,12 +57,12 @@ class Users extends React.Component {
                 </span>
                     <span>
                     <span>
-                        <div>{u.fullName}</div>
+                        <div>{u.name}</div>
                         <div>{u.status}</div>
                     </span>
                     <span>
-                        <div>{u.location.country}</div>
-                        <div>{u.location.city}</div>
+                        <div>{"u.location.country"}</div>
+                        <div>{"u.location.city"}</div>
                     </span>
                 </span>
                 </div>)
